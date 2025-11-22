@@ -24,7 +24,7 @@ export default class Task extends BaseModel {
   public isDaily: boolean = false
 
   @column()
-  declare projectId: string
+  declare projectId: string | null
 
   @belongsTo(() => Project)
   declare project: BelongsTo<typeof Project>
@@ -35,6 +35,7 @@ export default class Task extends BaseModel {
     relatedKey: 'id',
     pivotForeignKey: 'task_id',
     pivotRelatedForeignKey: 'dependency_id',
+    pivotTimestamps: true,
   })
   declare dependencies: ManyToMany<typeof Task>
 
@@ -44,6 +45,7 @@ export default class Task extends BaseModel {
     relatedKey: 'id',
     pivotForeignKey: 'dependency_id',
     pivotRelatedForeignKey: 'task_id',
+    pivotTimestamps: true,
   })
   declare dependents: ManyToMany<typeof Task>
 

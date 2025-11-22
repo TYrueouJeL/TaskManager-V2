@@ -13,7 +13,7 @@ export default class extends BaseSchema {
       table.boolean('is_daily').notNullable().defaultTo(false)
       table
         .uuid('project_id')
-        .notNullable()
+        .nullable()
         .references('id')
         .inTable('projects')
         .onDelete('CASCADE')
