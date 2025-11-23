@@ -9,6 +9,7 @@
 
 import router from '@adonisjs/core/services/router'
 import TasksController from '#controllers/tasks_controller'
+import ProjectController from '#controllers/project_controller'
 
 router.group(() => {
   router.get('/', [TasksController, 'index'])
@@ -17,3 +18,11 @@ router.group(() => {
   router.put('/:id', [TasksController, 'update'])
   router.delete('/:id', [TasksController, 'delete'])
 }).prefix('/tasks')
+
+router.group(() => {
+  router.get('/', [ProjectController, 'index'])
+  router.post('/', [ProjectController, 'create'])
+  router.get('/:id', [ProjectController, 'read'])
+  router.put('/:id', [ProjectController, 'update'])
+  router.delete('/:id', [ProjectController, 'delete'])
+}).prefix('/projects')
